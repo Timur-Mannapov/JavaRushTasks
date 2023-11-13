@@ -1,0 +1,16 @@
+package com.javarush.task.pro.task04.task0413;
+
+/* 
+Рисуем треугольник
+*/
+
+public class Solution {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 10; i++) {
+           int eight = 0 + i;
+           for (int j = 0; j < eight; j++)
+            System.out.print(8);
+            System.out.println();
+        }
+    }
+}

@@ -11,6 +11,7 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
         int ms = scanner.nextInt();
         int km = (int)Math.round(ms*3.6);
-        System.out.println(km);
+        System.out.print(km);
+
     }
 }

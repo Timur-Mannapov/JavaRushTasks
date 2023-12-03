@@ -16,7 +16,7 @@ public class Solution {
 
     public static String[] getTokens(String query, String delimiter) {
         StringTokenizer tokenizer = new StringTokenizer(query, delimiter);
-        String[] delimitedquerry =  query.split(delimiter);
-        return delimitedquerry;
+        String[] token =  query.split(delimiter);
+        return token;
     }
 }

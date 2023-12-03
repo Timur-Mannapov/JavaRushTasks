@@ -26,40 +26,25 @@ public class Solution {
         String hexNumber = "";
         while (!binaryNumber.isEmpty()) {
             String fourBit = binaryNumber.substring(0, 4);
-            String oneHex = "";
-            if (fourBit.equals("0000")) {
-                oneHex = "0";
-            } else if (fourBit.equals("0001")) {
-                oneHex = "1";
-            } else if (fourBit.equals("0010")) {
-                oneHex = "2";
-            } else if (fourBit.equals("0011")) {
-                oneHex = "3";
-            } else if (fourBit.equals("0100")) {
-                oneHex = "4";
-            } else if (fourBit.equals("0101")) {
-                oneHex = "5";
-            } else if (fourBit.equals("0110")) {
-                oneHex = "6";
-            } else if (fourBit.equals("0111")) {
-                oneHex = "7";
-            } else if (fourBit.equals("1000")) {
-                oneHex = "8";
-            } else if (fourBit.equals("1001")) {
-                oneHex = "9";
-            } else if (fourBit.equals("1010")) {
-                oneHex = "a";
-            } else if (fourBit.equals("1011")) {
-                oneHex = "b";
-            } else if (fourBit.equals("1100")) {
-                oneHex = "c";
-            } else if (fourBit.equals("1101")) {
-                oneHex = "d";
-            } else if (fourBit.equals("1110")) {
-                oneHex = "e";
-            } else if (fourBit.equals("1111")) {
-                oneHex = "f";
-            }
+            String oneHex = switch (fourBit) {
+                case "0000" -> "0";
+                case "0001" -> "1";
+                case "0010" -> "2";
+                case "0011" -> "3";
+                case "0100" -> "4";
+                case "0101" -> "5";
+                case "0110" -> "6";
+                case "0111" -> "7";
+                case "1000" -> "8";
+                case "1001" -> "9";
+                case "1010" -> "a";
+                case "1011" -> "b";
+                case "1100" -> "c";
+                case "1101" -> "d";
+                case "1110" -> "e";
+                case "1111" -> "f";
+                default -> "";
+            };
             hexNumber = hexNumber + oneHex;
             binaryNumber = binaryNumber.substring(4);
         }
@@ -73,40 +58,25 @@ public class Solution {
         String binaryNumber = "";
         for (int i = 0; i < hexNumber.length(); i++) {
             String oneHex = String.valueOf(hexNumber.charAt(i));
-            String fourBit = "";
-            if (oneHex.equals("0")) {
-                fourBit = "0000";
-            } else if (oneHex.equals("1")) {
-                fourBit = "0001";
-            } else if (oneHex.equals("2")) {
-                fourBit = "0010";
-            } else if (oneHex.equals("3")) {
-                fourBit = "0011";
-            } else if (oneHex.equals("4")) {
-                fourBit = "0100";
-            } else if (oneHex.equals("5")) {
-                fourBit = "0101";
-            } else if (oneHex.equals("6")) {
-                fourBit = "0110";
-            } else if (oneHex.equals("7")) {
-                fourBit = "0111";
-            } else if (oneHex.equals("8")) {
-                fourBit = "1000";
-            } else if (oneHex.equals("9")) {
-                fourBit = "1001";
-            } else if (oneHex.equals("a")) {
-                fourBit = "1010";
-            } else if (oneHex.equals("b")) {
-                fourBit = "1011";
-            } else if (oneHex.equals("c")) {
-                fourBit = "1100";
-            } else if (oneHex.equals("d")) {
-                fourBit = "1101";
-            } else if (oneHex.equals("e")) {
-                fourBit = "1110";
-            } else if (oneHex.equals("f")) {
-                fourBit = "1111";
-            }
+            String fourBit = switch (oneHex) {
+                case "0" -> "0000";
+                case "1" -> "0001";
+                case "2" -> "0010";
+                case "3" -> "0011";
+                case "4" -> "0100";
+                case "5" -> "0101";
+                case "6" -> "0110";
+                case "7" -> "0111";
+                case "8" -> "1000";
+                case "9" -> "1001";
+                case "a" -> "1010";
+                case "b" -> "1011";
+                case "c" -> "1100";
+                case "d" -> "1101";
+                case "e" -> "1110";
+                case "f" -> "1111";
+                default -> "";
+            };
             binaryNumber = binaryNumber + fourBit;
         }
         return binaryNumber;

@@ -33,7 +33,7 @@ public class Iphone {
             return false;
         }
 
-        return this.model == phone.model && this.color == phone.color && this.price == phone.price;
+        return this.model.equals(phone.model) && this.color.equals(phone.color) && this.price == phone.price;
     }
 
 

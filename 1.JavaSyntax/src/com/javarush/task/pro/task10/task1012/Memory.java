@@ -16,17 +16,17 @@ public class Memory {
     }
 
     public static void executeDefragmentation(String[] array) {
-        String[] massive = new String[array.length];
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] != null) {
-                for (int j = 0; j < 1; j++) {
-                    massive[j] = array[i];
-                }
+
+        for (int i = array.length; i >= 0; i--) {
+            for (int j = 1; j < i; j++) {
+                if (array[j-1] == null) {
+                    array[j-1] = array[j];
+                    array[j] = null;
                 }
             }
-        array = Arrays.copyOf(massive,array.length);
-
         }
 
     }
+
+}
 

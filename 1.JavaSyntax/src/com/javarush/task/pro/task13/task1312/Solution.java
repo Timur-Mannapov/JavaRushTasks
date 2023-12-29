@@ -1,6 +1,7 @@
 package com.javarush.task.pro.task13.task1312;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 /* 
@@ -26,6 +27,7 @@ public class Solution {
         programmingLanguages.add("Python");
         programmingLanguages.add("PHP");
         programmingLanguages.add("C++");
+
         for (String element : programmingLanguages) {
             map.put(programmingLanguages.indexOf(element), element);
         }

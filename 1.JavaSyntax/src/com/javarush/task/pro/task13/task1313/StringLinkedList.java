@@ -14,21 +14,21 @@ public class StringLinkedList {
 
     public void add(String value) {
         if (first.next == null) {
-            Node node = new Node();
-            node.value = value;
-            first.next = node;
+            Node element = new Node();
+            element.value = value;
+            first.next = element;
         }
         if (last.prev == null) {
             last.prev = first.next;
             return;
         }
-        Node node = new Node();
-        node.value = value;
+        Node element = new Node();
+        element.value = value;
 
         Node lastNode = last.prev;
-        lastNode.next = node;
-        node.prev = lastNode;
-        last.prev = node;
+        lastNode.next = element;
+        element.prev = lastNode;
+        last.prev = element;
     }
 
     public static class Node {

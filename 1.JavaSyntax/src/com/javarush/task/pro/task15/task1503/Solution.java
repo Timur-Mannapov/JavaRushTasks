@@ -12,18 +12,17 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        try (Scanner scanner = new Scanner(System.in)) {
-            String fileName = scanner.nextLine();
-            try (BufferedReader bufferedReader = Files.newBufferedReader(Path.of(fileName))) {
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    System.out.println(line);
-                }
-            } catch (IOException e) {
-                System.out.println("Something went wrong : " + e);
+        try (Scanner scanner = new Scanner(System.in);
+             BufferedReader bufferedReader = Files.newBufferedReader(Path.of(scanner.nextLine()))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
             }
+        } catch (IOException e) {
+            System.out.println("Something went wrong : " + e);
         }
     }
 }
+
 
 

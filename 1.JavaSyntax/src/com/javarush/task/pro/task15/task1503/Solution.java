@@ -11,7 +11,7 @@ import java.util.Scanner;
 */
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         try (Scanner scanner = new Scanner(System.in)) {
             String fileName = scanner.nextLine();
             try (BufferedReader bufferedReader = Files.newBufferedReader(Path.of(fileName))) {
@@ -25,4 +25,5 @@ public class Solution {
         }
     }
 }
+
 

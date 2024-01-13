@@ -15,12 +15,12 @@ import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
-        try (Scanner scanner = new Scanner(System.in)) {
-             List<String> input = Files.readAllLines(Path.of(scanner.nextLine()));
-             for (String str : input) {
-                 System.out.println(str);
-             }
+        Scanner scanner = new Scanner(System.in);
+        List<String> input = Files.readAllLines(Path.of(scanner.nextLine()));
+        for (String str : input) {
+            System.out.println(str.replaceAll("[.,\\s]", ""));
         }
     }
 }
+
 

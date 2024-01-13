@@ -18,8 +18,10 @@ public class Solution {
         Scanner scanner = new Scanner(System.in);
         printSomething(scanner.nextLine());
         String result = outputStream.toString();
-//        String reversedResult = new StringBuilder(result).reverse().toString();
-//        System.out.println(reversedResult);
+        String reversedResult = new StringBuilder(result).reverse().toString();
+        outputStream.reset();
+        outputStream.writeBytes(reversedResult.getBytes());
+        System.out.println(outputStream);
 
 //        StringBuilder resultReverse = new StringBuilder(result);
 //        String newResult = String.valueOf(resultReverse.reverse());

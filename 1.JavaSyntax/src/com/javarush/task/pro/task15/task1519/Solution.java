@@ -20,6 +20,7 @@ public class Solution {
                 if (Files.isRegularFile(path)) {
                     Files.copy(path,targetDirectory.resolve(path.getFileName()));
                 }
+
             }
         }
     }

@@ -20,8 +20,11 @@ public class Solution {
         Path directory = Path.of(scanner.nextLine());
         try (DirectoryStream<Path> strings = Files.newDirectoryStream(directory)) {
             for (Path path : strings) {
-                System.out.println(path + THIS_IS_FILE);
-                System.out.println(directory + THIS_IS_DIR);
+                if (Files.isRegularFile(path)) {
+                    System.out.println(path + THIS_IS_FILE);
+                } else if (Files.isDirectory(path)) {
+                    System.out.println(path + THIS_IS_DIR);
+                }
             }
         }
     }

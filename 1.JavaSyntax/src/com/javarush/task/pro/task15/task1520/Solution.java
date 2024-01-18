@@ -18,7 +18,8 @@ public class Solution {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(sourceDirectory)) {
             for (Path path : stream) {
                 if (Files.isRegularFile(path)) {
-                    Files.move(path, targetDirectory);
+                    Path nameDirectory = targetDirectory.resolve(path.getFileName());
+                    Files.move(path,nameDirectory);
                 }
             }
         }

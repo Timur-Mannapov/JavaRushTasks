@@ -29,6 +29,9 @@ public class Solution {
     }
 
     public static class Cat extends Pet {
-
+        @Override
+        public void setName(String name) {
+            this.name = "";
+        }
     }
 }

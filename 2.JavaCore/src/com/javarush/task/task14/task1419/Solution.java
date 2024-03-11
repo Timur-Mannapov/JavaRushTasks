@@ -2,6 +2,8 @@ package com.javarush.task.task14.task1419;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
+import java.lang.reflect.MalformedParametersException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +30,14 @@ public class Solution {
             exceptions.add(e);
         }
         exceptions.add(new ArrayIndexOutOfBoundsException());
-        exceptions.add(new NegativeArraySizeException());
-        exceptions.add(new ArithmeticException());
-        exceptions.add(new InterruptedIOException());
-        exceptions.add(new IndexOutOfBoundsException());
-        exceptions.add(new IllegalArgumentException());
-        exceptions.add(new IOException());
-        exceptions.add(new Exception());
         exceptions.add(new NullPointerException());
+        exceptions.add(new IllegalArgumentException());
+        exceptions.add(new ClassCastException());
+        exceptions.add(new IndexOutOfBoundsException());
+        exceptions.add(new NumberFormatException());
+        exceptions.add(new UnsupportedOperationException());
+        exceptions.add(new NegativeArraySizeException());
+        exceptions.add(new SecurityException());
 
     }
 }

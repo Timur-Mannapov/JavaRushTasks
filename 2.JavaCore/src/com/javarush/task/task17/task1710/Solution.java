@@ -21,7 +21,7 @@ public class Solution {
 
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat input = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
+        SimpleDateFormat output = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
         Person person = null;
 
         if (args[0].equals("-c")) {
@@ -43,6 +43,29 @@ public class Solution {
                     sex = "ж";
                 }
                 System.out.println(person.getName() + " " + sex + " " + output.format(person.getBirthDate()));
+            }
+        } else if (args[0].equals("-u")) {
+            int index = Integer.parseInt(args[1]);
+            if (index >= 0 && allPeople.size() > index) {
+                String name = args[2];
+                person = allPeople.get(index);
+                person.setName(name);
+                person.setBirthDate(input.parse(args[4]));
+                if (args[3].equalsIgnoreCase("ж")) {
+                    person.setSex(Sex.FEMALE);
+                } else if (args[3].equalsIgnoreCase("м")) {
+                    person.setSex(Sex.MALE);
+                }
+                allPeople.set(index, person);
+            }
+        } else if (args[0].equals("-d")) {
+            int index = Integer.parseInt(args[1]);
+            if (index >= 0 && allPeople.size() > index) {
+                person = allPeople.get(index);
+                person.setName(null);
+                person.setSex(null);
+                person.setBirthDate(null);
+                allPeople.set(index, person);
             }
         }
     }

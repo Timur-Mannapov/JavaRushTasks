@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,17 +25,10 @@ public class Solution {
             for (Integer i : list) {
                 map.put(i, count++);
             }
-            int value = Integer.MIN_VALUE;
-            int key = 0;
+            int maxValue = Collections.max(map.values());
             for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-                if (value <= entry.getValue()) {
-                    value = entry.getValue();
-                    key = entry.getKey();
-                }
-            }
-            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-                if (entry.getValue() == key) {
-                    System.out.println(entry.getKey() + " ");
+                if (entry.getValue() == maxValue) {
+                    System.out.print(entry.getKey() + " ");
                 }
             }
         }

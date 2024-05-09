@@ -7,18 +7,21 @@ import java.io.*;
 */
 
 public class Solution {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args)  {
         String str = null;
         try {
             while (true) {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                if (reader.readLine() == null) {
-                    str = reader.readLine();
+                while ((str = reader.readLine()) != null) {
+                    FileReader fileReader = new FileReader(str);
+                    fileReader.close();
                 }
-                reader.close();
             }
         } catch (FileNotFoundException e) {
             System.out.println(str);
+
+        }
+        catch (IOException e) {
 
         }
     }

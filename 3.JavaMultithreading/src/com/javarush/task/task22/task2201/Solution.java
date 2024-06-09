@@ -35,8 +35,7 @@ public class Solution {
 
     public synchronized String getPartOfString(String string, String threadName) {
         try {
-            String stringTab = string.substring(string.indexOf("\t") + 1, string.lastIndexOf("\t"));
-            return stringTab;
+            return string.substring(string.indexOf("\t") + 1, string.lastIndexOf("\t"));
         } catch (StringIndexOutOfBoundsException e) {
             if (threadName.equals(FIRST_THREAD_NAME)) {
                 throw new StringForFirstThreadTooShortException(e.getCause());

@@ -6,5 +6,10 @@ public class StringForSecondThreadTooShortException extends RuntimeException {
         super(cause);
     }
 
+    @Override
+    public synchronized Throwable getCause() {
+        return super.getCause();
+    }
+
 
 }

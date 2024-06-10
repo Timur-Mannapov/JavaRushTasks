@@ -10,16 +10,19 @@ public class Solution {
     }
 
     public static String getPartOfString(String string) {
-        String result = null;
         try {
-            if ((string == null) || (string.split(" ").length < 5)) {
+            if ((string == null) || (string.split(" ").length < 4)) {
                 throw new TooShortStringException();
-            }
-            result = string.substring(string.indexOf(" ") + 1);
-        } catch (TooShortStringException e) {
+            } else {
+                String stringSpace = string.substring(string.indexOf(" ") + 1);
+                String[] split = stringSpace.split(" ");
+                String format = "%s %s %s %s";
+                return String.format(format, split[0] , split[1] , split[2] , split[3]);
 
+            }
+        } catch (Exception e) {
+            throw new TooShortStringException();
         }
-        return result;
     }
 
     public static class TooShortStringException extends RuntimeException {

@@ -17,7 +17,7 @@ public class Solution {
         U, V, W, X, Y, Z;
 
         int getLetterPosition() {
-            return Alphabet.values();
+            return ordinal() + 1;
         }
     }
 }

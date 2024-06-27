@@ -39,6 +39,31 @@ public class Solution {
     }
 
     public static void sort(List<Stock> list) {
+        Collections.sort(list, new Comparator<Stock>() {
+            @Override
+            public int compare(Stock s1, Stock s2) {
+                String name1 = (String) s1.get("name");
+                String name2 = (String) s2.get("name");
+                int resName = name1.compareTo(name2);
+                if (resName == 0) {
+                    Date date1 = (Date) s1.get("date");
+                    Date date2 = (Date) s2.get("date");
+                    int resDate = date2.compareTo(date1);
+                    if (resDate == 0) {
+                        Double change1 = s1.containsKey("change") ?
+                                (Double) s1.get("change") :
+                                ((Double) s1.get("last")) - ((Double) s1.get("open"));
+                        Double change2 = s2.containsKey("change") ?
+                                (Double) s2.get("change") :
+                                ((Double) s2.get("last")) - ((Double) s2.get("open"));
+                        int resDouble = change2.compareTo(change1);
+                        return resDouble;
+                    }
+                    return resDate;
+                }
+                return resName;
+            }
+        });
 //        list.sort(Comparator.comparing(stock -> stock.get("name").toString()));
 //        list.sort(Comparator.comparing(stock -> ((Date) stock.get("date"))));
 //        Comparator<Stock> comparator = (s1, s2) -> {
@@ -51,13 +76,6 @@ public class Solution {
 //
 //            return Double.compare(change2, change1);
 //        };
-        Collections.sort(list, new Comparator<Stock>() {
-            @Override
-            public int compare(Stock o1, Stock o2) {
-                return 0;
-            }
-        });
-
 
 
 //        list.sort(new Comparator<Stock>() {

@@ -5,10 +5,18 @@ import java.util.Collections;
 import java.util.List;
 
 public class Human implements Alive{
-    public static int nextId = 0;
+    private static int nextId = 0;
     private int id;
     protected int age;
     protected String name;
+
+
+    public Human(String name, int age) {
+        this.name = name;
+        this.age = age;
+        this.id = nextId;
+        nextId++;
+    }
 
     private List<Human> children = new ArrayList<>();
 
@@ -24,29 +32,22 @@ public class Human implements Alive{
         children.remove(human);
     }
 
-    protected int[] size;
+     public class Size{
+        public int height;
+        public int weight;
+     }
+    protected Size size;
 
 
+    private BloodGroup bloodGroup;
 
-    public static final int FIRST = 1;
-    public static final int SECOND = 2;
-    public static final int THIRD = 3;
-    public static final int FOURTH = 4;
-    private int bloodGroup;
-
-    public void setBloodGroup(int code) {
-        bloodGroup = code;
-    }
-
-    public int getBloodGroup() {
+    public BloodGroup getBloodGroup() {
         return bloodGroup;
     }
 
-    public Human(String name, int age) {
-        this.age = age;
-        this.name = name;
+    public void setBloodGroup(BloodGroup code) {
+        bloodGroup = code;
     }
-
 
     public int getAge() {
         return age;
@@ -68,9 +69,7 @@ public class Human implements Alive{
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public String getPosition() {
         return "Человек";
@@ -81,7 +80,7 @@ public class Human implements Alive{
     }
 
     public void printSize() {
-        System.out.println("Рост: " + size[0] + " Вес: " + size[1]);
+        System.out.println("Рост: " + size.height + " Вес: " + size.weight);
     }
 
     @Override

@@ -1,10 +1,14 @@
 package com.javarush.task.task29.task2909.human;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
+@Setter
+@Getter
 public class University {
     private List<Student> students = new ArrayList<>();
 
@@ -16,58 +20,24 @@ public class University {
         this.age = age;
     }
 
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Student getStudentWithAverageGrade(double ave) {
-        for (Student student : students) {
-            if (student.getAverageGrade() == ave) {
-                return student;
-            }
-        }
-        //TODO:
-        return null;
+    public Student getStudentWithAverageGrade(double averageGrade) {
+        return students.stream()
+                .filter(student -> student.getAverageGrade() == averageGrade)
+                .findFirst()
+                .orElseThrow();
     }
 
     public Student getStudentWithMaxAverageGrade() {
-        return Collections.max(students, new Comparator<Student>() {
-            @Override
-            public int compare(Student o1, Student o2) {
-                return Double.compare(o1.getAverageGrade(), o2.getAverageGrade());
-            }
-        });
-        //TODO:
+
+        return students.stream()
+                .max(Comparator.comparingDouble(Student::getAverageGrade))
+                .orElseThrow();
     }
 
     public Student getStudentWithMinAverageGrade() {
-        return Collections.min(students, new Comparator<Student>() {
-            @Override
-            public int compare(Student o1, Student o2) {
-                return Double.compare(o1.getAverageGrade(), o2.getAverageGrade());
-            }
-        });
-        //TODO:
+        return students.stream()
+                .min(Comparator.comparingDouble(Student::getAverageGrade))
+                .orElseThrow();
     }
 
     public void expel(Student student){

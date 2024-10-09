@@ -1,11 +1,14 @@
 package com.javarush.task.task29.task2909.car;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
 public class Car {
-    static public final int TRUCK = 0;
-    static public final int SEDAN = 1;
-    static public final int CABRIOLET = 2;
+    public static final int TRUCK = 0;
+    public static final int SEDAN = 1;
+    public static final int CABRIOLET = 2;
 
     double fuel;
 
@@ -15,55 +18,65 @@ public class Car {
 
     private int type;
 
+    @Setter
+    @Getter
     private boolean driverAvailable;
     private int numberOfPassengers;
 
-    public Car(int type, int numberOfPassengers) {
+    protected Car(int type, int numberOfPassengers) {
         this.type = type;
         this.numberOfPassengers = numberOfPassengers;
     }
 
-    public int fill(double numberOfLiters) {
-        if (numberOfLiters < 0)
-            return -1;
+
+    public static Car create(int type, int numberOfPassengers) {
+        return switch (type) {
+            case 0 -> new Truck(numberOfPassengers);
+            case 1 -> new Sedan(numberOfPassengers);
+            case 2 -> new Cabriolet(numberOfPassengers);
+            default -> null;
+        };
+    }
+
+    private boolean canPassengersBeTransferred() {
+        return isDriverAvailable() && fuel > 0;
+    }
+
+    public void fill(double numberOfLiters) throws Exception {
+
+        if (numberOfLiters < 0) {
+            throw new Exception();
+        }
         fuel += numberOfLiters;
-        return 0;
+    }
+
+    public boolean isSummer(Date date, Date summerStart, Date summerEnd) {
+        return date.after(summerStart) && date.before(summerEnd);
+    }
+
+    public double getWinterConsumption(int length) {
+        return length * winterFuelConsumption + winterWarmingUp;
+    }
+
+    public double getSummerConsumption(int length) {
+        return length * summerFuelConsumption;
     }
 
     public double getTripConsumption(Date date, int length, Date SummerStart, Date SummerEnd) {
-        double consumption;
-        if (date.before(SummerStart) || date.after(SummerEnd)) {
-            consumption = length * winterFuelConsumption + winterWarmingUp;
-        } else {
-            consumption = length * summerFuelConsumption;
-        }
-        return consumption;
+        return isSummer(date, SummerStart, SummerEnd) ?
+                getSummerConsumption(length) : getWinterConsumption(length);
     }
 
     public int getNumberOfPassengersCanBeTransferred() {
-        if (!isDriverAvailable())
-            return 0;
-        if (fuel <= 0)
-            return 0;
-
-        return numberOfPassengers;
-    }
-
-    public boolean isDriverAvailable() {
-        return driverAvailable;
-    }
-
-    public void setDriverAvailable(boolean driverAvailable) {
-        this.driverAvailable = driverAvailable;
+        return canPassengersBeTransferred() ? numberOfPassengers : 0;
     }
 
     public void startMoving() {
+
         if (numberOfPassengers > 0) {
             fastenPassengersBelts();
-            fastenDriverBelt();
-        } else {
-            fastenDriverBelt();
         }
+        fastenDriverBelt();
     }
 
     public void fastenPassengersBelts() {
@@ -72,11 +85,5 @@ public class Car {
     public void fastenDriverBelt() {
     }
 
-    public int getMaxSpeed() {
-        if (type == TRUCK)
-            return 80;
-        if (type == SEDAN)
-            return 120;
-        return 90;
-    }
+
 }
